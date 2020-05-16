@@ -40,7 +40,7 @@ object StreamingJoins {
     val streamedBandsGuitaristsDF = streamedBandsDF.join(guitarPlayers, guitarPlayers.col("band") === streamedBandsDF.col("id"), "inner")
 
     /*
-      restricted joins:
+      restricted joins: (Because spark does not allow unbounded accumulation of data)
       - stream joining with static: RIGHT outer join/full outer join/right_semi not permitted
       - static joining with streaming: LEFT outer join/full/left_semi not permitted
      */

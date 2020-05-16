@@ -139,8 +139,20 @@ object DataSender {
     printer.println("10000,green")
   }
 
+  def example4() = {
+    Thread.sleep(4000)
+    printer.println("1000,red")
+    printer.println("500,yellow")
+    printer.println("2000,green")
+    printer.println("3000,blue")
+    Thread.sleep(3000)
+    printer.println("4000,black")
+    Thread.sleep(3000)
+
+  }
+
   def main(args: Array[String]): Unit = {
-    example3()
+    example2()
   }
 }
 

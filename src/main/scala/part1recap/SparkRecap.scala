@@ -28,6 +28,7 @@ object SparkRecap {
     expr("Weight_in_lbs / 2.2").as("Weight_in_kg_2")
   )
 
+  // So select and expr are together give more syntactical sugar
   val carsWeights = cars.selectExpr("Weight_in_lbs / 2.2")
 
   // filter
@@ -40,6 +41,7 @@ object SparkRecap {
   val countByOrigin = cars
     .groupBy(col("Origin")) // a RelationalGroupedDataset
     .count()
+  countByOrigin.show()
 
   // joining
   val guitarPlayers = spark.read
@@ -61,6 +63,8 @@ object SparkRecap {
   // datasets = typed distributed collection of objects
   case class GuitarPlayer(id: Long, name: String, guitars: Seq[Long], band: Long)
   val guitarPlayersDS = guitarPlayers.as[GuitarPlayer] // needs spark.implicits
+  // _.name is regular expression that we apply on regular collection but spark let us do the same operation
+  // on distributed collection
   guitarPlayersDS.map(_.name)
 
   // Spark SQL

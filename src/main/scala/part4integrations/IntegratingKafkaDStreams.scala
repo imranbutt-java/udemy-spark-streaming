@@ -24,7 +24,7 @@ object IntegratingKafkaDStreams {
     "key.deserializer" -> classOf[StringDeserializer], // receiving data from kafka
     "value.deserializer" -> classOf[StringDeserializer],
     "auto.offset.reset" -> "latest",
-    "enable.auto.commit" -> false.asInstanceOf[Object]
+    "enable.auto.commit" -> false.asInstanceOf[Object] // Bcz Object is not a super class of false
   )
 
   val kafkaTopic = "rockthejvm"
